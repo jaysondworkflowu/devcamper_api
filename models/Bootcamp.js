@@ -120,7 +120,7 @@ BootcampSchema.pre('save', async function (next) {
     country: loc[0].countryCode,
   };
   // Do not send an address
-  this.addres = undefined;
+  this.address = undefined;
   next();
 });
 
