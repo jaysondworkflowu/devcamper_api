@@ -12,14 +12,16 @@ const {
 
 const router = express.Router();
 
+const { protect } = require('../middleware/auth');
+
 router.route('/radius/:zipcode/:distance').get(getBootcampsInRadius);
 
-router.route('/').get(getBootcamps).post(createBootcamp);
+router.route('/').get(getBootcamps).post(protect, createBootcamp);
 
 router
   .route('/:id')
   .get(getBootcamp)
   .put(updateBootcamp)
-  .delete(deleteBootcamp);
+  .delete(protect, deleteBootcamp);
 
 module.exports = router;
